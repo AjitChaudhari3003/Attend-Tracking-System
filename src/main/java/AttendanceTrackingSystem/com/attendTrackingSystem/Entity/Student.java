@@ -1,11 +1,24 @@
 package AttendanceTrackingSystem.com.attendTrackingSystem.Entity;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "Students")
 public class Student {
 	
+	@Id
+	@Column(name = "frn_no")
 	private String frnNo;
+	@Column(name = "name")
 	private String name;
+	@Column(name = "email")
 	private String email;
+	@Column(name = "batch_id")
 	private int batchId;
+	@Column(name = "is_active")
 	private boolean isActive;
 
 	public Student() {

@@ -2,11 +2,23 @@ package AttendanceTrackingSystem.com.attendTrackingSystem.Entity;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "Batches")
 public class Batch {
 	
+	@Id
+	@Column(name = "batch_id")
 	private int batchId;
+	@Column(name = "batch_name")
 	private String batchName;
+	@Column(name = "start_time")
 	private LocalDateTime startTime;
+	@Column(name = "end_time")
 	private LocalDateTime endTime;
 	
 	public Batch() {

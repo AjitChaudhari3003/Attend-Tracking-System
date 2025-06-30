@@ -1,10 +1,22 @@
 package AttendanceTrackingSystem.com.attendTrackingSystem.Entity;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "Notifications")
 public class Notification {
 	
+	@Id
+	@Column(name = "id")
 	private int id;
+	@Column(name = "user_id")
 	private int userId;
+	@Column(name = "message")
 	private String message;
+	@Column(name = "is_seen")
 	private boolean isSeen;
 	
 	public Notification() {

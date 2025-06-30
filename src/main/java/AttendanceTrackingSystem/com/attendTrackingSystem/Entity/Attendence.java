@@ -1,10 +1,22 @@
 package AttendanceTrackingSystem.com.attendTrackingSystem.Entity;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "Attendance")
 public class Attendence {
 	
+	@Id
+	@Column(name = "id")
 	private int id;
+	@Column(name = "frn_no")
 	private String frnNo;
+	@Column(name = "date")
 	private String date;
+	@Column(name = "is_present")
 	private boolean isPresent;
 	
 	public Attendence() {
