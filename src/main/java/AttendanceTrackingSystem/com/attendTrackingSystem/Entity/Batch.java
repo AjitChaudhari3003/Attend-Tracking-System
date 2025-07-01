@@ -72,6 +72,7 @@ public class Batch {
 	public void setEndTime(LocalTime endTime) {
 		this.endTime = endTime;
 	}
+<<<<<<< HEAD
 	
 	public List<Student> getStudents() {
 		return students;
@@ -82,5 +83,7 @@ public class Batch {
 	}
 	
 	
+=======
+>>>>>>> d06174b4b28f55519e5825eeabdf0ba910095486
 
 }
