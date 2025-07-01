@@ -1,16 +1,16 @@
 package AttendanceTrackingSystem.com.attendTrackingSystem.Services;
 
-public class UserLogin {
+public class UserService {
 	private String email;
 	private String password;
 	
 	
-	public UserLogin() {
+	public UserService() {
 		super();
 	}
 
 
-	public UserLogin(String email, String password) {
+	public UserService(String email, String password) {
 		super();
 		this.email = email;
 		this.password = password;
