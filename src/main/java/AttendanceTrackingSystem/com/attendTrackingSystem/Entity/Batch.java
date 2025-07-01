@@ -1,6 +1,7 @@
 package AttendanceTrackingSystem.com.attendTrackingSystem.Entity;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -17,15 +18,15 @@ public class Batch {
 	@Column(name = "batch_name")
 	private String batchName;
 	@Column(name = "start_time")
-	private LocalDateTime startTime;
+	private LocalTime startTime;
 	@Column(name = "end_time")
-	private LocalDateTime endTime;
+	private LocalTime endTime;
 	
 	public Batch() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Batch(int batchId, String batchName, LocalDateTime startTime, LocalDateTime endTime) {
+	public Batch(int batchId, String batchName, LocalTime startTime, LocalTime endTime) {
 		super();
 		this.batchId = batchId;
 		this.batchName = batchName;
@@ -49,19 +50,19 @@ public class Batch {
 		this.batchName = batchName;
 	}
 
-	public LocalDateTime getStartTime() {
+	public LocalTime getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(LocalDateTime startTime) {
+	public void setStartTime(LocalTime startTime) {
 		this.startTime = startTime;
 	}
 
-	public LocalDateTime getEndTime() {
+	public LocalTime getEndTime() {
 		return endTime;
 	}
 
-	public void setEndTime(LocalDateTime endTime) {
+	public void setEndTime(LocalTime endTime) {
 		this.endTime = endTime;
 	}
 	
