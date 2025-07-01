@@ -1,8 +1,7 @@
 package AttendanceTrackingSystem.com.attendTrackingSystem.Entity;
 
-import java.time.LocalDateTime;
-=======
->>>>>>> d136ec2598b9ae8182870e37fd92a044db12a23c
+import java.time.LocalDateTime; 
+
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +10,8 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -29,6 +30,10 @@ public class Batch {
 	private LocalTime endTime;
 	@OneToMany(mappedBy = "batch", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Student> students = new ArrayList<>();
+	@ManyToOne
+	@JoinColumn(name = "trainer_id")  // trainer_id is a foreign key column in Batches table
+	private User trainer;
+
 	
 
 	public Batch() {
