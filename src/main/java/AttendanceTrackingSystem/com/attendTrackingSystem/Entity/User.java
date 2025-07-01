@@ -16,8 +16,11 @@ public class User {
 	private String name;
 	@Column(name = "email")
 	private String email;
+	@Column(name = "password")
+	private String password;
 	@Column(name = "role")
 	private String role;
+	
 	
 	public User() {
 		// TODO Auto-generated constructor stub
