@@ -1,15 +1,18 @@
 create database attendanceTrackingSystem;
-drop database attendanceTrackingSystem;
 use attendanceTrackingSystem;
 
 show tables;
-drop table batches;
-desc attendance;
+table subjects;
+table batches;
+table users;
+table students;
+
+desc users;
 desc batches;
-desc notifications;
 desc students;
 desc subjects;
-desc users;
+desc attendance;
+desc notifications;
 
 alter table attendance 
 add foreign key(frn_no) references students(frn_no),
@@ -50,5 +53,34 @@ VALUES
   (11, 'python full stack january 2025 offline', '09:00:00', '17:00:00'),
   (12, 'python full stack january 2025 online',  '18:00:00', '20:00:00');
 
-select * from batches
-insert into students (frn_no, batch_id,
+select * from batches;
+
+INSERT INTO subjects (subject_id, subject_name)
+VALUES
+  (1, 'c'),
+  (2, 'c++'),
+  (3, 'java'),
+  (4, 'python'),
+  (5, 'html'),
+  (6, 'css'),
+  (7, 'c#'),
+  (8, 'sql');
+  
+select * from subjects;
+
+INSERT INTO Students (frn_no, name, email, batch_id, is_active)
+VALUES
+  (' FRN-12J0923/059', 'Chetan Laxman Patil', 'ranjeet.kamble@example.com',    1,  TRUE),
+  ('FRN-12J0923/080', 'Komal Anant Gundla', 'ranjit.kale@example.com',      2,  TRUE),
+  ('FRN-12J0923/112', ' Namrata Vijay Kherde', 'chetan.natu@example.com',      3,  TRUE),
+  (' FRN-12J0923/113', 'Rani Mohan Jadhav', 'vaishali.reddy@example.com',   4,  TRUE),
+  (' FRN-12J0923/114', 'Divya Satish More',        'sonal.jaju@example.com',       5,  TRUE),
+  (' FRN-12J0923/116', 'Ajit Gangavane',      'iskra.daware@example.com',     6,  TRUE),
+  (' FRN-12J0923/117', 'Khairnar Swamini jyotish', 'john.smith@example.com',       7,  TRUE),
+  (' FRN-12J0923/118', 'Neha Sagar Bansod',          'jane.doe@example.com',         8,  FALSE),
+  ('FRN-12J0923/119', 'Vishal Santosh kumbhar',     'alice.johnson@example.com',    9,  TRUE),
+  ('FRN-12J0923/120', 'Ashwini Raju Gawari',      'bob.williams@example.com',     10, TRUE),
+  ('FRN-12J0923/121', 'Satish yadav',     'charlie.brown@example.com',    11, FALSE),
+  ('FRN-12J0923/122', 'Jayesh Vijay Patil',        'diana.ross@example.com',       12, TRUE);
+
+-- insert into students (frn_no, batch_id,

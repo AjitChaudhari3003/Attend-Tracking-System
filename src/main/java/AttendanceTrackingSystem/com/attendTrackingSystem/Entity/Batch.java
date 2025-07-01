@@ -2,10 +2,14 @@ package AttendanceTrackingSystem.com.attendTrackingSystem.Entity;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -21,7 +25,10 @@ public class Batch {
 	private LocalTime startTime;
 	@Column(name = "end_time")
 	private LocalTime endTime;
+	@OneToMany(mappedBy = "batch", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Student> students = new ArrayList<>();
 	
+
 	public Batch() {
 		// TODO Auto-generated constructor stub
 	}
@@ -64,6 +71,14 @@ public class Batch {
 
 	public void setEndTime(LocalTime endTime) {
 		this.endTime = endTime;
+	}
+	
+	public List<Student> getStudents() {
+		return students;
+	}
+
+	public void setStudents(List<Student> students) {
+		this.students = students;
 	}
 	
 	

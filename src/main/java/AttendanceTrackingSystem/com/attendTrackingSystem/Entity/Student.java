@@ -2,7 +2,11 @@ package AttendanceTrackingSystem.com.attendTrackingSystem.Entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,8 +20,13 @@ public class Student {
 	private String name;
 	@Column(name = "email")
 	private String email;
-	@Column(name = "batch_id")
-	private int batchId;
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(
+        name = "batch_id", 
+        referencedColumnName = "batch_id", 
+        foreignKey = @ForeignKey(name = "fk_student_batch")
+    )
+    private Batch batch;
 	@Column(name = "is_active")
 	private boolean isActive;
 
@@ -25,11 +34,11 @@ public class Student {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Student(String frnNo, String name, String email, int batchId, boolean isActive) {
+	public Student(String frnNo, String name, String email, Batch batch, boolean isActive) {
 		this.frnNo = frnNo;
 		this.name = name;
 		this.email = email;
-		this.batchId = batchId;
+		this.batch = batch;
 		this.isActive = isActive;
 	}
 
@@ -57,12 +66,12 @@ public class Student {
 		this.email = email;
 	}
 
-	public int getBatchId() {
-		return batchId;
+	public Batch getBatch() {
+		return batch;
 	}
 
-	public void setBatchId(int batchId) {
-		this.batchId = batchId;
+	public void setBatch(Batch batch) {
+		this.batch = batch;
 	}
 
 	public boolean isActive() {
