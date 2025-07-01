@@ -21,6 +21,7 @@ add foreign key(user_id) references users(user_id);
 alter table students 
 add foreign key(batch_id) references batches(batch_id);
 
+HEAD
 INSERT INTO Users (user_id, name, email, password, role)
 VALUES (1, 'Vinayak Ujalambe', 'vu@gmail.com', 'secret123', 'trainer'),
 		(2, 'Shubham Wagh', 'sw@gmail.com', 'alicePwd', 'co-ordinator'),
@@ -52,3 +53,13 @@ VALUES
 
 select * from batches
 insert into students (frn_no, batch_id,
+
+insert into users (user_id, name, email, password, role) values
+(1, 'Aadesh Tamgadge', 'aadesh@gmail.com', 'aadesh123', 'co-ordinator'), 
+(2, 'Chetan Natu', 'chetan@gmail.com', 'chetan123', 'trainer'), 
+(3, 'Shubham Wagh', 'shubham@gmail.com', 'shubham123', 'trainer'), 
+(4, 'Ranjit Kale', 'ranjit@gmail.com', 'ranjit123', 'co-ordinator'), 
+(5, 'Vinayak Ujalambe', 'vinayak@gmail.com', 'vinayak123', 'trainer'), 
+(6, 'Sonal Jaju', 'sonal@gmail.com', 'sonal123', 'trainer');
+
+65e8ecf (Done)

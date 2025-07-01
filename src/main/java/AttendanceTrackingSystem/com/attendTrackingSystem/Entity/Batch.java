@@ -65,7 +65,5 @@ public class Batch {
 	public void setEndTime(LocalTime endTime) {
 		this.endTime = endTime;
 	}
-	
-	
 
 }
