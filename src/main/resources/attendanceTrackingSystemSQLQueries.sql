@@ -24,7 +24,6 @@ add foreign key(user_id) references users(user_id);
 alter table students 
 add foreign key(batch_id) references batches(batch_id);
 
-HEAD
 INSERT INTO Users (user_id, name, email, password, role)
 VALUES (1, 'Vinayak Ujalambe', 'vu@gmail.com', 'secret123', 'trainer'),
 		(2, 'Shubham Wagh', 'sw@gmail.com', 'alicePwd', 'co-ordinator'),
@@ -54,7 +53,7 @@ VALUES
   (11, 'python full stack january 2025 offline', '09:00:00', '17:00:00'),
   (12, 'python full stack january 2025 online',  '18:00:00', '20:00:00');
 
-<<<<<<< HEAD
+
 select * from batches;
 
 INSERT INTO subjects (subject_id, subject_name)
@@ -86,9 +85,9 @@ VALUES
   ('FRN-12J0923/122', 'Jayesh Vijay Patil',        'diana.ross@example.com',       12, TRUE);
 
 -- insert into students (frn_no, batch_id,
-=======
+
 select * from batches
-insert into students (frn_no, batch_id,
+
 
 insert into users (user_id, name, email, password, role) values
 (1, 'Aadesh Tamgadge', 'aadesh@gmail.com', 'aadesh123', 'co-ordinator'), 
@@ -98,5 +97,4 @@ insert into users (user_id, name, email, password, role) values
 (5, 'Vinayak Ujalambe', 'vinayak@gmail.com', 'vinayak123', 'trainer'), 
 (6, 'Sonal Jaju', 'sonal@gmail.com', 'sonal123', 'trainer');
 
-65e8ecf (Done)
->>>>>>> d06174b4b28f55519e5825eeabdf0ba910095486
+
