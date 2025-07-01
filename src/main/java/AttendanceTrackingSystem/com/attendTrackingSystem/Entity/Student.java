@@ -24,8 +24,7 @@ public class Student {
     @JoinColumn(
         name = "batch_id", 
         referencedColumnName = "batch_id", 
-        foreignKey = @ForeignKey(name = "fk_student_batch")
-    )
+        foreignKey = @ForeignKey(name = "fk_student_batch"))
     private Batch batch;
 	@Column(name = "is_active")
 	private boolean isActive;

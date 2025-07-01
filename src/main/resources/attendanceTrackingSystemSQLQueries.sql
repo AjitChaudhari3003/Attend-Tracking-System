@@ -86,15 +86,6 @@ VALUES
 
 -- insert into students (frn_no, batch_id,
 
-select * from batches
 
-
-insert into users (user_id, name, email, password, role) values
-(1, 'Aadesh Tamgadge', 'aadesh@gmail.com', 'aadesh123', 'co-ordinator'), 
-(2, 'Chetan Natu', 'chetan@gmail.com', 'chetan123', 'trainer'), 
-(3, 'Shubham Wagh', 'shubham@gmail.com', 'shubham123', 'trainer'), 
-(4, 'Ranjit Kale', 'ranjit@gmail.com', 'ranjit123', 'co-ordinator'), 
-(5, 'Vinayak Ujalambe', 'vinayak@gmail.com', 'vinayak123', 'trainer'), 
-(6, 'Sonal Jaju', 'sonal@gmail.com', 'sonal123', 'trainer');
 
 
