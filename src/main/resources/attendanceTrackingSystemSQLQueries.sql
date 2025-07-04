@@ -86,6 +86,33 @@ VALUES
 
 -- insert into students (frn_no, batch_id,
 
+TRUNCATE TABLE subjects;
 
+INSERT INTO subjects (subject_id, subject_name, trainer_id, batch_id)
+VALUES
+  (1, 'C',       1, 1),
+  (2, 'C++',     1, 1),
+  (3, 'Java',    3, 2),
+  (4, 'Python',  3, 3),
+  (5, 'HTML',    5, 4),
+  (6, 'CSS',     5, 4),
+  (7, 'C#',      6, 5),
+  (8, 'SQL',     6, 5);
 
+SELECT * FROM subjects WHERE trainer_id IS NOT NULL AND batch_id IS NOT NULL;
 
+SELECT * FROM subjects WHERE trainer_id = 1;
+
+-- Sample: Assigning trainer_id to existing batches
+UPDATE batches SET trainer_id = 1 WHERE batch_id = 1;
+UPDATE batches SET trainer_id = 3 WHERE batch_id = 2;
+UPDATE batches SET trainer_id = 5 WHERE batch_id = 3;
+UPDATE batches SET trainer_id = 6 WHERE batch_id = 4;
+UPDATE batches SET trainer_id = 7 WHERE batch_id = 5;
+UPDATE batches SET trainer_id = 1 WHERE batch_id = 6;
+UPDATE batches SET trainer_id = 3 WHERE batch_id = 7;
+UPDATE batches SET trainer_id = 5 WHERE batch_id = 8;
+UPDATE batches SET trainer_id = 6 WHERE batch_id = 9;
+UPDATE batches SET trainer_id = 7 WHERE batch_id = 10;
+UPDATE batches SET trainer_id = 1 WHERE batch_id = 11;
+UPDATE batches SET trainer_id = 3 WHERE batch_id = 12;

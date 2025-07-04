@@ -1,47 +1,79 @@
 package AttendanceTrackingSystem.com.attendTrackingSystem.Entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "subjects")
 public class Subject {
-	
-	@Id
-	@Column(name = "subject_id")
-	private int subjectId;
-	@Column(name = "subject_name")
-	private String subName;
-	
-	public Subject() {
-		// TODO Auto-generated constructor stub
-	}
 
-	public Subject(int subjectId, String subName) {
-		this.subjectId = subjectId;
-		this.subName = subName;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // optional: makes subjectId auto-increment
+    @Column(name = "subject_id")
+    private int subjectId;
 
-	public int getSubjectId() {
-		return subjectId;
-	}
+    @Column(name = "subject_name", nullable = false)
+    private String subName;
 
-	public void setSubjectId(int subjectId) {
-		this.subjectId = subjectId;
-	}
+    @ManyToOne
+    @JoinColumn(name = "trainer_id", referencedColumnName = "user_id")
+    private User trainer;
 
-	public String getSubName() {
-		return subName;
-	}
+    @ManyToOne
+    @JoinColumn(name = "batch_id", referencedColumnName = "batch_id")
+    private Batch batch;
 
-	public void setSubName(String subName) {
-		this.subName = subName;
-	}
-	
-	
-	
-	
+    @ManyToOne
+    @JoinColumn(name = "coordinator_id", referencedColumnName = "user_id")
+    private User coordinator;
 
+    public Subject() {}
+
+    public Subject(String subName, User trainer, Batch batch, User coordinator) {
+        this.subName = subName;
+        this.trainer = trainer;
+        this.batch = batch;
+        this.coordinator = coordinator;
+    }
+
+    // --- Getters & Setters ---
+
+    public int getSubjectId() {
+        return subjectId;
+    }
+
+    public void setSubjectId(int subjectId) {
+        this.subjectId = subjectId;
+    }
+
+    public String getSubName() {
+        return subName;
+    }
+
+    public void setSubName(String subName) {
+        this.subName = subName;
+    }
+
+    public User getTrainer() {
+        return trainer;
+    }
+
+    public void setTrainer(User trainer) {
+        this.trainer = trainer;
+    }
+
+    public Batch getBatch() {
+        return batch;
+    }
+
+    public void setBatch(Batch batch) {
+        this.batch = batch;
+    }
+
+    public User getCoordinator() {
+        return coordinator;
+    }
+
+    public void setCoordinator(User coordinator) {
+        this.coordinator = coordinator;
+    }
 }

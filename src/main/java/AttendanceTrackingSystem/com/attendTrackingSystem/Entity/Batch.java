@@ -4,14 +4,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Batches")
@@ -33,14 +26,11 @@ public class Batch {
     @OneToMany(mappedBy = "batch", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Student> students = new ArrayList<>();
 
-    @ManyToOne
-	@JoinColumn(name = "trainer_id")  // trainer_id is a foreign key column in Batches table
-	private User trainer;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "trainer_id", referencedColumnName = "user_id")
+    private User trainer;
 
-	
-    public Batch() {
-        // Default constructor
-    }
+    public Batch() {}
 
     public Batch(int batchId, String batchName, LocalTime startTime, LocalTime endTime) {
         this.batchId = batchId;
@@ -48,6 +38,8 @@ public class Batch {
         this.startTime = startTime;
         this.endTime = endTime;
     }
+
+    // Getters and Setters
 
     public int getBatchId() {
         return batchId;
@@ -89,7 +81,15 @@ public class Batch {
         this.students = students;
     }
 
-    // Optional: helper methods to maintain bidirectional consistency
+    public User getTrainer() {
+        return trainer;
+    }
+
+    public void setTrainer(User trainer) {
+        this.trainer = trainer;
+    }
+
+    // Optional: helper methods
     public void addStudent(Student student) {
         students.add(student);
         student.setBatch(this);
