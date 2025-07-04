@@ -21,27 +21,25 @@ public class Subject {
     @Column(name = "end_time", nullable = false)
     private LocalTime endTime;
 
-    @ManyToOne
-    @JoinColumn(name = "trainer_id", referencedColumnName = "user_id")
-    private User trainer;
+//    @ManyToOne
+//    @JoinColumn(name = "trainer_id", referencedColumnName = "user_id")
+//    private User trainer;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "batch_id", referencedColumnName = "batch_id")
+//    private Batch batch;
 
-    @ManyToOne
-    @JoinColumn(name = "batch_id", referencedColumnName = "batch_id")
-    private Batch batch;
-
-    @ManyToOne
-    @JoinColumn(name = "coordinator_id", referencedColumnName = "user_id")
-    private User coordinator;
+//    @ManyToOne
+//    @JoinColumn(name = "coordinator_id", referencedColumnName = "user_id")
+//    private User coordinator;
 
     public Subject() {}
 
-    public Subject(String subjectName, LocalTime startTime, LocalTime endTime, User trainer, Batch batch, User coordinator) {
+    public Subject(String subjectName, LocalTime startTime, LocalTime endTime) {
         this.subjectName = subjectName;
         this.startTime = startTime;
         this.endTime = endTime;
-        this.trainer = trainer;
-        this.batch = batch;
-        this.coordinator = coordinator;
+        
     }
 
     // --- Getters and Setters ---
@@ -78,27 +76,5 @@ public class Subject {
         this.endTime = endTime;
     }
 
-    public User getTrainer() {
-        return trainer;
-    }
-
-    public void setTrainer(User trainer) {
-        this.trainer = trainer;
-    }
-
-    public Batch getBatch() {
-        return batch;
-    }
-
-    public void setBatch(Batch batch) {
-        this.batch = batch;
-    }
-
-    public User getCoordinator() {
-        return coordinator;
-    }
-
-    public void setCoordinator(User coordinator) {
-        this.coordinator = coordinator;
-    }
+    
 }

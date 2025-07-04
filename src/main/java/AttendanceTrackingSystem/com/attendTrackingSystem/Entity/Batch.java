@@ -24,20 +24,19 @@ public class Batch {
     @Column(name = "end_date")
     private LocalDate endDate;
 
-    @ManyToOne
-    @JoinColumn(name = "trainer_id", referencedColumnName = "user_id")
-    private User trainer;
+//    @ManyToOne
+//    @JoinColumn(name = "trainer_id", referencedColumnName = "user_id")
+//    private User trainer;
 
     @OneToMany(mappedBy = "batch", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Student> students = new ArrayList<>();
 
     public Batch() {}
 
-    public Batch(String batchName, LocalDate startDate, LocalDate endDate, User trainer) {
+    public Batch(String batchName, LocalDate startDate, LocalDate endDate) {
         this.batchName = batchName;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.trainer = trainer;
     }
 
     // --- Getters and Setters ---
@@ -72,14 +71,6 @@ public class Batch {
 
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
-    }
-
-    public User getTrainer() {
-        return trainer;
-    }
-
-    public void setTrainer(User trainer) {
-        this.trainer = trainer;
     }
 
     public List<Student> getStudents() {
