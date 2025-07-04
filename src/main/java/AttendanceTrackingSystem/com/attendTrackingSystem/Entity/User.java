@@ -1,69 +1,75 @@
 package AttendanceTrackingSystem.com.attendTrackingSystem.Entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Users")
 public class User {
-	
-	@Id
-	@Column(name = "user_Id")
-	private int userId;
-	@Column(name = "name")
-	private String name;
-	@Column(name = "email")
-	private String email;
-	@Column(name = "password")
-	private String password;
-	@Column(name = "role")
-	private String role;
-	
-	
-	public User() {
-		// TODO Auto-generated constructor stub
-	}
 
-	public User(int userId, String name, String email, String role) {
-		this.userId = userId;
-		this.name = name;
-		this.email = email;
-		this.role = role;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
 
-	public int getUserId() {
-		return userId;
-	}
+    @Column(name = "name", nullable = false)
+    private String name;
 
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
 
-	public String getName() {
-		return name;
-	}
+    @Column(name = "password", nullable = false)
+    private String password;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    @Column(name = "role", nullable = false)
+    private String role; // trainer, coordinator
 
-	public String getEmail() {
-		return email;
-	}
+    public User() {}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public User(int id, String name, String email, String password, String role) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
 
-	public String getRole() {
-		return role;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setRole(String role) {
-		this.role = role;
-	}
-	
+    public void setId(int id) {
+        this.id = id;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 }

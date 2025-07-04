@@ -3,19 +3,19 @@ package AttendanceTrackingSystem.com.attendTrackingSystem.Entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Attendance")
-public class Attendence {
+@Table(name = "attendance")
+public class Attendance {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-increment
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
-    @Column(name = "frn_no")
-    private String frnNo;
-
-    @Column(name = "date")
+    @Column(name = "date", nullable = false)
     private String date;
+
+    @Column(name = "frn_no", nullable = false)
+    private String frnNo;
 
     @Column(name = "is_present")
     private boolean isPresent;
@@ -24,18 +24,17 @@ public class Attendence {
     @JoinColumn(name = "subject_id", referencedColumnName = "subject_id")
     private Subject subject;
 
-    public Attendence() {
-    }
+    public Attendance() {}
 
-    public Attendence(int id, String frnNo, String date, boolean isPresent, Subject subject) {
-        this.id = id;
-        this.frnNo = frnNo;
+    public Attendance(String date, String frnNo, boolean isPresent, Subject subject) {
         this.date = date;
+        this.frnNo = frnNo;
         this.isPresent = isPresent;
         this.subject = subject;
     }
 
     // --- Getters and Setters ---
+
     public int getId() {
         return id;
     }
@@ -44,20 +43,20 @@ public class Attendence {
         this.id = id;
     }
 
-    public String getFrnNo() {
-        return frnNo;
-    }
-
-    public void setFrnNo(String frnNo) {
-        this.frnNo = frnNo;
-    }
-
     public String getDate() {
         return date;
     }
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getFrnNo() {
+        return frnNo;
+    }
+
+    public void setFrnNo(String frnNo) {
+        this.frnNo = frnNo;
     }
 
     public boolean isPresent() {

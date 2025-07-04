@@ -1,86 +1,77 @@
 package AttendanceTrackingSystem.com.attendTrackingSystem.Entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.ForeignKey;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Students")
+@Table(name = "students")
 public class Student {
-	
-	@Id
-	@Column(name = "frn_no")
-	private String frnNo;
-	@Column(name = "name")
-	private String name;
-	@Column(name = "email")
-	private String email;
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(
-        name = "batch_id", 
-        referencedColumnName = "batch_id", 
-        foreignKey = @ForeignKey(name = "fk_student_batch"))
+
+    @Id
+    @Column(name = "frn_no", nullable = false, unique = true)
+    private String frnNo;
+
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
+
+    @Column(name = "is_active", nullable = false)
+    private boolean isActive;
+
+    @ManyToOne
+    @JoinColumn(name = "batch_id", referencedColumnName = "batch_id")
     private Batch batch;
-	@Column(name = "is_active")
-	private boolean isActive;
 
-	public Student() {
-		// TODO Auto-generated constructor stub
-	}
+    public Student() {}
 
-	public Student(String frnNo, String name, String email, Batch batch, boolean isActive) {
-		this.frnNo = frnNo;
-		this.name = name;
-		this.email = email;
-		this.batch = batch;
-		this.isActive = isActive;
-	}
+    public Student(String frnNo, String name, String email, boolean isActive, Batch batch) {
+        this.frnNo = frnNo;
+        this.name = name;
+        this.email = email;
+        this.isActive = isActive;
+        this.batch = batch;
+    }
 
-	public String getFrnNo() {
-		return frnNo;
-	}
+    // --- Getters and Setters ---
 
-	public void setFrnNo(String frnNo) {
-		this.frnNo = frnNo;
-	}
+    public String getFrnNo() {
+        return frnNo;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setFrnNo(String frnNo) {
+        this.frnNo = frnNo;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public Batch getBatch() {
-		return batch;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setBatch(Batch batch) {
-		this.batch = batch;
-	}
+    public boolean isActive() {
+        return isActive;
+    }
 
-	public boolean isActive() {
-		return isActive;
-	}
+    public void setActive(boolean active) {
+        isActive = active;
+    }
 
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
-	}
-	
-	
-	
+    public Batch getBatch() {
+        return batch;
+    }
+
+    public void setBatch(Batch batch) {
+        this.batch = batch;
+    }
 }

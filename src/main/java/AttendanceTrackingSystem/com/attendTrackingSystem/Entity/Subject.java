@@ -1,18 +1,25 @@
 package AttendanceTrackingSystem.com.attendTrackingSystem.Entity;
 
 import jakarta.persistence.*;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "subjects")
 public class Subject {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // optional: makes subjectId auto-increment
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "subject_id")
     private int subjectId;
 
     @Column(name = "subject_name", nullable = false)
-    private String subName;
+    private String subjectName;
+
+    @Column(name = "start_time", nullable = false)
+    private LocalTime startTime;
+
+    @Column(name = "end_time", nullable = false)
+    private LocalTime endTime;
 
     @ManyToOne
     @JoinColumn(name = "trainer_id", referencedColumnName = "user_id")
@@ -28,14 +35,16 @@ public class Subject {
 
     public Subject() {}
 
-    public Subject(String subName, User trainer, Batch batch, User coordinator) {
-        this.subName = subName;
+    public Subject(String subjectName, LocalTime startTime, LocalTime endTime, User trainer, Batch batch, User coordinator) {
+        this.subjectName = subjectName;
+        this.startTime = startTime;
+        this.endTime = endTime;
         this.trainer = trainer;
         this.batch = batch;
         this.coordinator = coordinator;
     }
 
-    // --- Getters & Setters ---
+    // --- Getters and Setters ---
 
     public int getSubjectId() {
         return subjectId;
@@ -45,12 +54,28 @@ public class Subject {
         this.subjectId = subjectId;
     }
 
-    public String getSubName() {
-        return subName;
+    public String getSubjectName() {
+        return subjectName;
     }
 
-    public void setSubName(String subName) {
-        this.subName = subName;
+    public void setSubjectName(String subjectName) {
+        this.subjectName = subjectName;
+    }
+
+    public LocalTime getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(LocalTime startTime) {
+        this.startTime = startTime;
+    }
+
+    public LocalTime getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(LocalTime endTime) {
+        this.endTime = endTime;
     }
 
     public User getTrainer() {

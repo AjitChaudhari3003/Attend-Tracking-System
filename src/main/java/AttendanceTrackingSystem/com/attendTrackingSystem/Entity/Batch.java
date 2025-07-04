@@ -1,45 +1,46 @@
 package AttendanceTrackingSystem.com.attendTrackingSystem.Entity;
 
-import java.time.LocalTime;
+import jakarta.persistence.*;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.*;
-
 @Entity
-@Table(name = "Batches")
+@Table(name = "batches")
 public class Batch {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "batch_id")
     private int batchId;
 
-    @Column(name = "batch_name")
+    @Column(name = "batch_name", nullable = false)
     private String batchName;
 
-    @Column(name = "start_time")
-    private LocalTime startTime;
+    @Column(name = "start_date")
+    private LocalDate startDate;
 
-    @Column(name = "end_time")
-    private LocalTime endTime;
+    @Column(name = "end_date")
+    private LocalDate endDate;
+
+    @ManyToOne
+    @JoinColumn(name = "trainer_id", referencedColumnName = "user_id")
+    private User trainer;
 
     @OneToMany(mappedBy = "batch", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Student> students = new ArrayList<>();
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "trainer_id", referencedColumnName = "user_id")
-    private User trainer;
-
     public Batch() {}
 
-    public Batch(int batchId, String batchName, LocalTime startTime, LocalTime endTime) {
-        this.batchId = batchId;
+    public Batch(String batchName, LocalDate startDate, LocalDate endDate, User trainer) {
         this.batchName = batchName;
-        this.startTime = startTime;
-        this.endTime = endTime;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.trainer = trainer;
     }
 
-    // Getters and Setters
+    // --- Getters and Setters ---
 
     public int getBatchId() {
         return batchId;
@@ -57,28 +58,20 @@ public class Batch {
         this.batchName = batchName;
     }
 
-    public LocalTime getStartTime() {
-        return startTime;
+    public LocalDate getStartDate() {
+        return startDate;
     }
 
-    public void setStartTime(LocalTime startTime) {
-        this.startTime = startTime;
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
     }
 
-    public LocalTime getEndTime() {
-        return endTime;
+    public LocalDate getEndDate() {
+        return endDate;
     }
 
-    public void setEndTime(LocalTime endTime) {
-        this.endTime = endTime;
-    }
-
-    public List<Student> getStudents() {
-        return students;
-    }
-
-    public void setStudents(List<Student> students) {
-        this.students = students;
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
     }
 
     public User getTrainer() {
@@ -89,7 +82,15 @@ public class Batch {
         this.trainer = trainer;
     }
 
-    // Optional: helper methods
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
+    // Optional helper methods
     public void addStudent(Student student) {
         students.add(student);
         student.setBatch(this);
