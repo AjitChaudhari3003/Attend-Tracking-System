@@ -21,16 +21,16 @@ public class Attendance {
     private boolean isPresent;
 
     @ManyToOne
-    @JoinColumn(name = "subject_id", referencedColumnName = "subject_id")
-    private Subject subject;
+    @JoinColumn(name = "tsb_id", referencedColumnName = "id")
+    private TrainerSubjectBatch trainerSubjectBatch;
 
     public Attendance() {}
 
-    public Attendance(String date, String frnNo, boolean isPresent, Subject subject) {
+    public Attendance(String date, String frnNo, boolean isPresent, TrainerSubjectBatch trainerSubjectBatch) {
         this.date = date;
         this.frnNo = frnNo;
         this.isPresent = isPresent;
-        this.subject = subject;
+        this.trainerSubjectBatch = trainerSubjectBatch;
     }
 
     // --- Getters and Setters ---
@@ -67,11 +67,13 @@ public class Attendance {
         isPresent = present;
     }
 
-    public Subject getSubject() {
-        return subject;
-    }
+	public TrainerSubjectBatch getTrainerSubjectBatch() {
+		return trainerSubjectBatch;
+	}
 
-    public void setSubject(Subject subject) {
-        this.subject = subject;
-    }
+	public void setTrainerSubjectBatch(TrainerSubjectBatch trainerSubjectBatch) {
+		this.trainerSubjectBatch = trainerSubjectBatch;
+	}
+
+    
 }
