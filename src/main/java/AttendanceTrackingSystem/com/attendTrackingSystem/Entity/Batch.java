@@ -25,7 +25,7 @@ public class Batch {
     private LocalDate endDate;
 
     @ManyToOne
-    @JoinColumn(name = "trainer_id", referencedColumnName = "user_id")
+    @JoinColumn(name = "trainer_id", referencedColumnName = "id")
     private User trainer;
 
     @OneToMany(mappedBy = "batch", cascade = CascadeType.ALL, orphanRemoval = true)
