@@ -24,11 +24,6 @@ public class Batch {
     @Column(name = "end_date")
     private LocalDate endDate;
 
-
-    @ManyToOne
-    @JoinColumn(name = "trainer_id", referencedColumnName = "user_id")
-    private User trainer;
-
     @OneToMany(mappedBy = "batch", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Student> students = new ArrayList<>();
 
