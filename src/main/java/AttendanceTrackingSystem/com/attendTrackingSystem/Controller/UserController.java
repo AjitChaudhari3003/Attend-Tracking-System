@@ -30,8 +30,8 @@ public class UserController {
 	public ResponseEntity<String> loginUser(@RequestBody UserloginDto userloginDto)
 	{
 		 return userService.login(userloginDto.getEmail(), userloginDto.getPassword())
-	                .map(user -> ResponseEntity.ok().body("Login Successfull"))
-	                .orElse(ResponseEntity.status(401).body("Invalid email or password"));
-	    	}
+	                .map(user -> ResponseEntity.ok().body("Login Successfull")) //returns this if success
+	                .orElse(ResponseEntity.status(401).body("Invalid email or password")); //returns this if email or pass not found
+	}
 
 }
